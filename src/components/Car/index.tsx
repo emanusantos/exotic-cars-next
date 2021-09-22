@@ -5,9 +5,9 @@ import Dots from 'components/Dots';
 type CarProps = {
     brand: string;
     model: string;
-    img: string;
+    img?: string;
     price: number;
-    onClick: () => void;
+    onClick?: () => void;
 };
 
 const Car = ({ brand, model, img, price, onClick }: CarProps) => {
@@ -18,10 +18,13 @@ const Car = ({ brand, model, img, price, onClick }: CarProps) => {
                 <Dots />
             </S.Wrapper>
             <S.Subtitle>{model.toUpperCase()}</S.Subtitle>
-            <Image
-                src={`assets/images/${img}.png`}
-                alt="logo"
-            />
+            <div style={{ width: 'auto', height: 'auto' }}>
+                <Image
+                    src={require(`/src/assets/images/${img}.png`)}
+                    alt="logo"
+                    layout='responsive'
+                />
+            </div>
             <S.Wrapper>
                 <S.Price>$</S.Price>
                 <h2>{price}</h2>
