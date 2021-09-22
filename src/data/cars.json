@@ -1,0 +1,109 @@
+{
+    "cars": [
+        {
+            "id": 1,
+            "brand": "Ferrari",
+            "model": "California",
+            "price": 725,
+            "fileName": "california"
+        },
+        {
+            "id": 2,
+            "brand": "Porsche",
+            "model": "911 Turbo S",
+            "price": 725,
+            "fileName": "911turbos"
+        },
+        {
+            "id": 3,
+            "brand": "Porsche",
+            "model": "912 Turbo S",
+            "price": 725,
+            "fileName": "912turbos"
+        },
+        {
+            "id": 4,
+            "brand": "Porsche",
+            "model": "911 GT3 RS",
+            "price": 725,
+            "fileName": "911gt3rs"
+        },
+        {
+            "id": 5,
+            "brand": "Bentley",
+            "model": "Continental GT",
+            "price": 825,
+            "fileName": "continentalgt"
+        },
+        {
+            "id": 6,
+            "brand": "BMW",
+            "model": "M1 Competition",
+            "price": 825,
+            "fileName": "m1competition"
+        },
+        {
+            "id": 7,
+            "brand": "Alfa Romeo",
+            "model": "4C Spider",
+            "price": 825,
+            "fileName": "4cspider"
+        },
+        {
+            "id": 8,
+            "brand": "McLaren",
+            "model": "P1 GTR",
+            "price": 925,
+            "fileName": "p1gtr"
+        },
+        {
+            "id": 9,
+            "brand": "Lamborghini",
+            "model": "Aventador",
+            "price": 925,
+            "fileName": "aventador"
+        },
+        {
+            "id": 10,
+            "brand": "Bugatti",
+            "model": "Veyron Spyder",
+            "price": 925,
+            "fileName": "veyronspyder"
+        },
+        {
+            "id": 11,
+            "brand": "Chevrolet",
+            "model": "Corvett",
+            "price": 925,
+            "fileName": "corvett"
+        },
+        {
+            "id": 12,
+            "brand": "Ferrari",
+            "model": "California",
+            "price": 725,
+            "fileName": "california2"
+        },
+        {
+            "id": 13,
+            "brand": "Rolls-Royce",
+            "model": "Wraith",
+            "price": 725,
+            "fileName": "wraith"
+        },
+        {
+            "id": 14,
+            "brand": "Porsche",
+            "model": "911 Turbo S",
+            "price": 725,
+            "fileName": "911turbos2"
+        },
+        {
+            "id": 15,
+            "brand": "Mercedes-Benz",
+            "model": "AMG GTS",
+            "price": 725,
+            "fileName": "amggts"
+        }
+    ]
+}

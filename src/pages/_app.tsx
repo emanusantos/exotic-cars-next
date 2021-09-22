@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <meta 
         name="description" 
         content="A simple project starter to work with TypeScript, React, NextJS and 
-      Styled Components" 
+        Styled Components" 
       />
     </Head>
     <GlobalStyles />
