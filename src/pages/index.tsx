@@ -5,8 +5,9 @@ import * as S from 'styles/home'
 import path from 'path';
 import fs from 'fs/promises';
 import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router';
 
-type CarResponse = {
+export type CarResponse = {
   id: number;
   brand: string;
   model: string;
@@ -14,11 +15,12 @@ type CarResponse = {
   fileName: string;
 }
 
-type Props = {
+export type Props = {
   cars: CarResponse[]
 }
 
 const Home: NextPage<Props> = ({ cars }) => {
+  const router = useRouter();
   return (
     <>
     <Header />
@@ -30,6 +32,7 @@ const Home: NextPage<Props> = ({ cars }) => {
           model={car.model} 
           price={car.price} 
           img={car.fileName} 
+          onClick={() => {router.push(`/${car.id}`)}}
         />
       ))}
     </S.Container>
@@ -52,7 +55,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       cars: data.cars
-    }
+    },
+    revalidate: 600
   };
 
 }
