@@ -44,7 +44,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const filePath = path.join(process.cwd(), 'src', 'data', 'cars.json');
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData.toString());
-  console.log(data);
 
   if (!data) {
     return {
