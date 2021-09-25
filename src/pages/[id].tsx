@@ -1,8 +1,9 @@
-import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
+import React from 'react'
+import type { NextPage, GetStaticProps, GetStaticPaths } from "next"
 import Image from 'next/image'
-import path from 'path';
-import fs from 'fs/promises';
-import { useRouter } from "next/router";
+import path from 'path'
+import fs from 'fs/promises'
+import { useRouter } from "next/router"
 import { CarResponse } from "pages";
 import Spinner from 'components/Spinner/index'
 import * as S from 'styles/details'
@@ -16,10 +17,28 @@ type Props = {
 }
 
 const CarDetails: NextPage<Props> = ({ loadedCar }) => {
+    const [currentIndex, setCurrentIndex] = React.useState(1);
     const router = useRouter();
+    const [colors, setColors] = React.useState([{ name: 'red', number: 0 }, { name: 'gray', number: 0o1 }, { name: 'yellow', number: 0o2 }])
+    let currentColor = colors[currentIndex];
+
     if (!loadedCar) {
         return <Spinner />
     }
+
+    const handleArrow = (param: string) => {
+        if (param === 'increment') {
+            if (currentIndex === 2) {
+                return setCurrentIndex(0);
+            };
+            setCurrentIndex(currentIndex + 1);
+        } else {
+            if (currentIndex === 0) {
+                return setCurrentIndex(2);
+            };
+            setCurrentIndex(currentIndex - 1);
+        };
+    };
 
     return (
         <S.Container>
@@ -52,8 +71,8 @@ const CarDetails: NextPage<Props> = ({ loadedCar }) => {
                 </S.CatalogButton>
                 <div style={{ width: '75%' }}>
                     <Image
-                        src={require(`/src/assets/images/graychosen.png`)}
-                        alt="logo"
+                        src={require(`/src/assets/images/${currentColor.name}chosen.png`)}
+                        alt={`The car displayed in ${currentColor.name} color`}
                     />
                 </div>
                 <div
@@ -64,8 +83,8 @@ const CarDetails: NextPage<Props> = ({ loadedCar }) => {
                         cursor: 'default'
                     }}
                 >
-                    <S.Title>01</S.Title>
-                    <p style={{ fontSize: '2rem', fontWeight: 300 }}>Gray</p>
+                    <S.Title>{currentColor.number === 0 ? `03` : `0${currentColor.number}`}</S.Title>
+                    <p style={{ fontSize: '2rem', fontWeight: 300 }}>{currentColor.name.charAt(0).toUpperCase() + currentColor.name.slice(1)}</p>
                 </div>
             </div>
             <div
@@ -86,7 +105,7 @@ const CarDetails: NextPage<Props> = ({ loadedCar }) => {
                     paddingTop: '3rem'
                 }}
             >
-                <S.Arrow>
+                <S.Arrow onClick={() => handleArrow('decrement')}>
                     <div style={{ width: '1.2rem' }}>
                         <Image
                             src={ArrowLeft2}
@@ -94,10 +113,16 @@ const CarDetails: NextPage<Props> = ({ loadedCar }) => {
                         />
                     </div>
                 </S.Arrow>
-                <CarImage color='red' />
-                <CarImage color='gray' />
-                <CarImage color='yellow' />
-                <S.Arrow>
+                {colors.map((color, i) => {
+                    if (color.name === currentColor.name) {
+                        colors[1] === colors[i]
+                    };
+
+                    return (
+                        <CarImage key={color.number} color={color.name} onClick={() => setCurrentIndex(color.number)} />
+                    )
+                })}
+                <S.Arrow onClick={() => handleArrow('increment')}>
                     <div style={{ width: '1.2rem' }}>
                         <Image
                             src={ArrowRight}
